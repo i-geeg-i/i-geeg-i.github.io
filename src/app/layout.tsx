@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "./style.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,6 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" type="image/png" href="/GG.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Egor Glebov personal website</title>
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   );
