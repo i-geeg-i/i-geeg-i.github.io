@@ -19,9 +19,6 @@ export default function Header(props : Props){
         }
       }, 1000);
     }, [index])
-    useEffect(() => {
-        console.log('This is some text logged by a React component.');
-      }, []); 
     return (
         <header>
             <h1 style={{color: "white"}} id="name">{names[index]}</h1>
