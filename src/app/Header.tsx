@@ -1,13 +1,10 @@
 'use client'
 import { use, useEffect, useState } from "react";
 
-import styles from "./menu.module.css"
-type Props = {
-    page : string;
-}
+import "./style.css"
 
 const names: string[] = ["GEEG", "i-geeg-i", "Egor Glebov"];
-export default function Header(props : Props){
+export default function Header(){
     const [index, setIndex] = useState(0)
     useEffect(() => {
       setTimeout(() => {
@@ -23,19 +20,11 @@ export default function Header(props : Props){
         <header>
             <h1 style={{color: "white"}} id="name">{names[index]}</h1>
             <nav>
-                <a className={getClassName("index", props.page)} href="./">Main page</a>
-                <a className={getClassName("about", props.page)} href="about">About Me</a>
-                <a className={getClassName("portfolio", props.page)} href="portfolio">Portfolio</a>
-                <a className={getClassName("contacts", props.page)} href="contacts">Contact Me</a>
+                <a className="nav" href="./">Main page</a>
+                <a className="nav" href="about">About Me</a>
+                <a className="nav" href="portfolio">Portfolio</a>
+                <a className="nav" href="contacts">Contact Me</a>
             </nav>
         </header>
     )
-}
-
-
-function getClassName(link: string, page: string):string{
-    if (link===page){
-        return "navNow";
-    }
-    return "nav";
 }
