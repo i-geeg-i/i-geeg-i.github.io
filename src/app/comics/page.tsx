@@ -118,7 +118,6 @@ async function fetchComics(id : string) : Promise<string>{
     }
     return (
       <>
-      <Header page="comics"/>
         <main>
           <div className="SiteElement">
             <form id="form-comics">
@@ -141,7 +140,6 @@ async function fetchComics(id : string) : Promise<string>{
           )}
           
         </main>
-        <Footer year={"2024"}/>
       </>
     );
   }

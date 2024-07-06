@@ -5,7 +5,6 @@ import Link from "next/link";
 export default function Portfolio() {
     return (
       <>
-        <Header page="portfolio"/>
         <main>
           <div className="SiteElement"><h2>Here you may find some of my projects. Not all of them are here 😭</h2>
             <ul id="projects">
@@ -26,7 +25,6 @@ export default function Portfolio() {
             </ul>
           </div>
         </main>
-        <Footer year={"2024"}/>
       </>
     );
   }

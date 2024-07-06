@@ -5,7 +5,6 @@ import "../style.css";
 export default function Contacts() {
     return (
       <>
-        <Header page="contacts"/>
         <main className="ok">
         <div className="links">      
           <h2>If you are interested to contact me you may do it by:</h2>
@@ -18,7 +17,6 @@ export default function Contacts() {
           <p>Most of the time you may find me in <BeautifulA link="https://maps.app.goo.gl/WQYP6tSePM7fHHv98" title="Link to the map" text="Innopolis"/>. However, sometimes I&apos;m present in my home town - <BeautifulA link="https://maps.app.goo.gl/2sQoMm4jzycDoNVq9" title="Link to the map" text="Magnitogorsk"/>.</p>
         </div>
     </main>
-    <Footer year={"2024"}/>
       </>
     );
   }

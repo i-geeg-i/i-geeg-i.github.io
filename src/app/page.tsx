@@ -12,7 +12,6 @@ export default function Home() {
   }
   return (
     <>
-    <Header page="index"/>
     <main>
       <div className="SiteElement">
         <img className="photo" src="photo1.png" alt="My photo"/>
@@ -31,7 +30,6 @@ export default function Home() {
               <button id="comics-btn" onClick={comicsBtn}>View some comics</button>
           </div>
     </main>
-    <Footer year={"2024"}/>
     </>  
   );
 }
