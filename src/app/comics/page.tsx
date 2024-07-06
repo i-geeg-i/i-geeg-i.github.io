@@ -69,7 +69,6 @@ async function fetchComics(id : string) : Promise<string>{
 
   const handlerEmailChange: (e: React.ChangeEvent<HTMLInputElement>) => void = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.indexOf("@innopolis.university") != -1){
-      setEmail(e.target.value);
       e.target.style.background = "white";
       e.target.style.color = "black";
     }
@@ -77,6 +76,7 @@ async function fetchComics(id : string) : Promise<string>{
       e.target.style.background = "red";
       e.target.style.color = "white";
     }
+    setEmail(e.target.value);
   };
 
 
