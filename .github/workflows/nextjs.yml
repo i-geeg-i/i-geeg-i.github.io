@@ -44,7 +44,7 @@ jobs:
             echo "manager=npm" >> $GITHUB_OUTPUT
             echo "install-command=ci" >> $GITHUB_OUTPUT
             echo "lint-command=run lint" >> $GITHUB_OUTPUT
-            echo "format-command=run format" >> $GITHUB_OUTPUT
+            echo "format-command=run format:fix" >> $GITHUB_OUTPUT
             echo "build-command=run build" >> $GITHUB_OUTPUT
             echo "runner=npm" >> $GITHUB_OUTPUT
           else
