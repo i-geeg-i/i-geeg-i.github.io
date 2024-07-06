@@ -4,7 +4,6 @@ import "../style.css";
 export default function About() {
     return (
       <>
-      <Header page="about"/>
       <main>      
         <div className="SiteElement" id="TechSkils">
             <h2>Technical skills</h2>
@@ -49,7 +48,7 @@ export default function About() {
             <p>My love for visual storytelling extends to films as well, where I enjoy watching a wide range of genres and styles, further enriching my appreciation for different forms of narrative art.</p>
         </div>
     </main>
-    <Footer year={"2024"}/>
+
     </>
       
     );
