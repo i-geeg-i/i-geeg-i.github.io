@@ -18,7 +18,7 @@ export default function Portfolio() {
             </li>
             <li>
               <Link href="https://github.com/i-geeg-i/c-">
-                Some basic examples of operations - C#{" "}
+                Some basic examples of operations - C#
                 <img
                   src="https://github.githubassets.com/assets/arctic-code-vault-contributor-default-df8d74122a06.png"
                   id="gthbArcticCode"
