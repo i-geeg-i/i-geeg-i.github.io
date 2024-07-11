@@ -2,6 +2,14 @@ import Header from "../Header";
 import Footer from "../Footer";
 import "../style.css";
 import Link from "next/link";
+import Head from "next/head";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Portfolio",
+  description: "This page shows some of my projects.",
+};
+
 export default function Portfolio() {
   return (
     <>

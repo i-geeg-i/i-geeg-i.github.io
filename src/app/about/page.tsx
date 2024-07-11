@@ -1,6 +1,13 @@
 import Header from "../Header";
 import Footer from "../Footer";
 import "../style.css";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About me",
+  description: "This is the about me page with my skills and interests.",
+};
+
 export default function About() {
   return (
     <>

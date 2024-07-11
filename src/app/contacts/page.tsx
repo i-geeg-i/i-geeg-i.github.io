@@ -2,6 +2,13 @@ import Header from "../Header";
 import Footer from "../Footer";
 import BeautifulA from "../BeautifulA";
 import "../style.css";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact me",
+  description: "On this page you can find some ways to contact me.",
+};
+
 export default function Contacts() {
   return (
     <>

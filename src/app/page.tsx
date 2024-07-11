@@ -1,15 +1,17 @@
-"use client";
 import Image from "next/image";
 import Header from "./Header";
 import Footer from "./Footer";
 import "./style.css";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Main page",
+  description: "This is the main page with a bit info about me.",
+};
+
 export default function Home() {
-  const MyRouter = useRouter();
-  function comicsBtn() {
-    MyRouter.push(`/comics`);
-  }
+
   return (
     <>
       <main>
@@ -50,9 +52,9 @@ export default function Home() {
           <h2> Let&apos;s connect and create something amazing together!</h2>
         </div>
         <div className="SiteElement" id="comics">
-          <button id="comics-btn" onClick={comicsBtn}>
+          <Link href={"/comics"}><button id="comics-btn">
             View some comics
-          </button>
+          </button></Link>
         </div>
       </main>
     </>

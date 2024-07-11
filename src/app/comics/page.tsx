@@ -1,9 +1,14 @@
-"use client";
 import Header from "../Header";
 import Footer from "../Footer";
 import { formatDistanceToNow } from "date-fns";
 import "../comics.css";
-import { useState } from "react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Comics",
+  description: "On this page I fetch id and comics using my Innopolis email.",
+};
+
 interface APIResponse {
   success: boolean;
   json_text: string;
@@ -20,16 +25,32 @@ interface Comics {
   realDate: string;
   disp: boolean;
 }
-export default function Comics() {
-  const [email, setEmail] = useState<string | undefined>(undefined);
-  const [comic, setComic] = useState<Comics>({
-    img: { src: "", alt: "", title: "" },
-    title: "",
-    date: "",
-    realDate: "",
-    disp: false,
-  });
-  const [error, setError] = useState<boolean>(false);
+export default async function Comics() {
+  let email:string;
+  let Comic:Comics;
+  const apiresp:APIResponse = await getComics('e.glebov@innopolis.university');
+  const img: image = {
+    alt: JSON.parse(apiresp.json_text)["alt"],
+    title: JSON.parse(apiresp.json_text)["safe_title"],
+    src: JSON.parse(apiresp.json_text)["img"],
+  };
+  const date = new Date(
+    Date.UTC(
+      Number.parseInt(JSON.parse(apiresp.json_text)["year"]) as number,
+      Number.parseInt(JSON.parse(apiresp.json_text)["month"]) as number,
+      Number.parseInt(JSON.parse(apiresp.json_text)["day"]) as number,
+    ),
+  );
+  const formattedDate = formatDistanceToNow(date);
+  const comic: Comics = {
+    img: img,
+    date: formattedDate,
+    realDate: date.toLocaleDateString(),
+    disp: true,
+    title: img.title,
+  };
+  Comic = comic;
+  let error:boolean = false;
   async function getComics(email: string): Promise<APIResponse> {
     const id: string = (await fetchId(email)) as string;
     if (id == "Wrong email") {
@@ -84,7 +105,7 @@ export default function Comics() {
       e.target.style.background = "red";
       e.target.style.color = "white";
     }
-    setEmail(e.target.value);
+    email = e.target.value;
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLButtonElement>) => {
@@ -99,13 +120,13 @@ export default function Comics() {
       email.substring(email.indexOf("@innopolis.university")) ===
         "@innopolis.university"
     ) {
-      setEmail(email.replace("%40", "@"));
+      email = email.replace("%40", "@");
       const apiresp: APIResponse = await getComics(email);
       if (apiresp.success === false) {
-        setError(true);
+        error = true;
         return;
       } else {
-        setError(false);
+        error = false;
         const img: image = {
           alt: JSON.parse(apiresp.json_text)["alt"],
           title: JSON.parse(apiresp.json_text)["safe_title"],
@@ -126,65 +147,40 @@ export default function Comics() {
           disp: true,
           title: img.title,
         };
-        setComic(comic);
+        Comic = comic;
       }
     } else {
-      setError(true);
+      error = true;
     }
   };
   return (
     <>
       <main>
-        <div className="SiteElement">
-          <form id="form-comics">
-            <label htmlFor="email" id="email-label">
-              Innopolis email:
-            </label>
-            <input
-              type="email"
-              placeholder="e.glebov@innopolis.university"
-              id="email"
-              onChange={handlerEmailChange}
-            />
-            <label
-              htmlFor="email"
-              id="wrong-email"
-              style={{ display: error ? "block" : "none" }}
-            >
-              Wrong email!
-            </label>
-          </form>
-          <button id="get-comics-btn" onClick={handleSubmit}>
-            Get comics
-          </button>
-        </div>
-        {comic.disp && (
           <div
             className="SiteElement"
             id="comics"
             style={{ display: "block", textAlign: "left" }}
           >
-            <h2>Your comics</h2>
+            <h2>Comics</h2>
             <div id="comicsContent">
               <div
                 className="comics"
                 style={{
-                  display: comic.disp ? "block" : "none",
+                  display: Comic.disp ? "block" : "none",
                   margin: "auto",
                 }}
               >
                 <img
-                  src={comic.img.src}
-                  alt={comic.img.alt}
-                  title={comic.img.title}
+                  src={Comic.img.src}
+                  alt={Comic.img.alt}
+                  title={Comic.img.title}
                 ></img>
                 <p>
-                  {comic.title} {comic.date} ago ({comic.realDate})
+                  {Comic.title} {Comic.date} ago ({Comic.realDate})
                 </p>
               </div>
             </div>
           </div>
-        )}
       </main>
     </>
   );
