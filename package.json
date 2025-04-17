@@ -12,10 +12,12 @@
   },
   "dependencies": {
     "date-fns": "^3.6.0",
+    "gsap": "^3.12.7",
     "next": "14.2.4",
     "prettier": "^3.3.2",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "swiper": "^11.2.5"
   },
   "devDependencies": {
     "@types/node": "^20",

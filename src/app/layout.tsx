@@ -20,9 +20,9 @@ export default function RootLayout({
       <meta name="author" content="Egor Glebov" />
     </head>
       <body className={inter.className}>
-        <Header />
+        {/* <Header /> */}
         {children}
-        <Footer year={"2024"} />
+        <Footer year={"2025"} />
       </body>
     </html>
   );
