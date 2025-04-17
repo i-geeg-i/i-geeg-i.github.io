@@ -26,32 +26,73 @@ html, body {
   font-size: 2em;
   margin: 0;
 }
+
 .hi img{
   width: 7em;
   height: 22em;
 }
+
+.group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeInUp 1s ease-out both;
+  border-radius: 20px;
+  padding: 1em 2em;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+.group:hover {
+  transform: rotateY(8deg) rotateX(3deg) scale(1.03);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 main {
   width: 100%;
 }
 
-footer{
+footer {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 100%;
   background-color: #63462D;
-  gap: 0px;
   color: #FFFFFF;
   font-family: "Irish Grover", cursive;
-  font-size: 1.5em;
-  margin-top: 10px;
+  font-size: 2.4em;
+  padding: 1em 0.5em;
+  text-align: center;
+  box-sizing: border-box;
+  margin-top: auto;
 }
-footer p{
-  margin: 0;  
-  font-family: "Irish Grover", cursive;
-  font-size: 1em;
+
+footer p {
+  margin: 0.3em 0;
+  font-size: 0.9em;
+  line-height: 1.4;
+  word-wrap: break-word;
+  max-width: 90vw;
 }
+
 
 .s_carousel h1{
   font-family: "Irish Grover", cursive;
@@ -119,9 +160,16 @@ footer p{
 .interested #me{
   border-radius: 100%;
 }
-.interested img{
-  max-width: 300px;
-  max-height: 300px;
-  width: 10vw;
-  height: 10vw;
+
+.interested img {
+  width: clamp(80px, 20vw, 200px); 
+  height: clamp(80px, 20vw, 200px);
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 1em;
+  transition: transform 0.3s ease;
+}
+
+.interested img:hover {
+  transform: scale(1.05);
 }
