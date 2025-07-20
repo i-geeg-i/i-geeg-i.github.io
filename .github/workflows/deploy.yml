@@ -24,7 +24,7 @@ jobs:
         run: npm ci
 
       - name: Build Next.js static export
-        run: npm run build && npm run export
+        run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
