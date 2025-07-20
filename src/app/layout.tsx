@@ -19,6 +19,7 @@ export default function RootLayout({
       <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       <meta name="author" content="Egor Glebov" />
       <title>Egor Glebov</title>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9880272668182862" crossOrigin="anonymous"></script>
     </head>
       <body className={inter.className}>
         {/* <Header /> */}
