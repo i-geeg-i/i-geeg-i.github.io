@@ -1,8 +1,6 @@
 import { useEffect, useRef } from 'react';
-import "swiper/css";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import "./scroll.css";
+import { headers } from 'next/headers';
 
 interface Item {
   spec: string;
@@ -16,40 +14,15 @@ interface Props {
 }
 
 const ScrollComponent = ({ props }: { props: Props }) => {
+  const lang = headers().get('accept-language') || 'en';
+  const isRu = lang.toLowerCase().startsWith('ru');
   const sectionRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
-  gsap.registerPlugin(ScrollTrigger);
-
-  useEffect(() => {
-    if (sectionRef.current && triggerRef.current && innerRef.current) {
-      const totalWidth = innerRef.current.scrollWidth;
-      const viewportWidth = window.innerWidth;
-
-      const scrollDistance = totalWidth - viewportWidth;
-
-      const anim = gsap.to(sectionRef.current, {
-        x: -scrollDistance,
-        ease: "none",
-        scrollTrigger: {
-          trigger: triggerRef.current,
-          start: "top top",
-          end: `+=${scrollDistance}`,
-          scrub: true,
-          pin: true,
-          anticipatePin: 1,
-        },
-      });
-
-      return () => {
-        anim.kill();
-      };
-    }
-  }, [props.items.length]);
 
   return (
     <section className="scroll-section-outer">
-      <div ref={triggerRef}>
+      <div>
         <h1>{props.text}</h1>
         <div ref={sectionRef} className="scroll-section-inner">
           <div ref={innerRef} className="scroll-wrapper">
