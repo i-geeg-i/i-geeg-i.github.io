@@ -28,19 +28,25 @@ jobs:
       - name: Build project
         run: npm run build
 
-      # Step 5: Deploy to server via SSH
-      - name: Deploy to server
+      # Step 5: Copy files to server
+      - name: Copy dist to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_IP }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          source: "dist/*"
+          target: "/var/www/geeg.tatar"
+
+      # Step 6: Reload nginx
+      - name: Reload nginx
         uses: appleboy/ssh-action@v0.1.6
         with:
           host: ${{ secrets.VPS_IP }}
           username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.SSH_KEY}}
+          key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            SITE_DIR=/var/www/geeg.tatar
-
-            mkdir -p $SITE_DIR
-
-            rsync -avz --delete ./dist/ $SITE_DIR/
-
             sudo systemctl reload nginx
+
