@@ -35,7 +35,7 @@ jobs:
           host: ${{ secrets.VPS_IP }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.SSH_KEY}}
-          port: 8080
+          port: 22
           script: |
             SITE_DIR=/var/www/geeg.tatar
 
