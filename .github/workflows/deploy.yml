@@ -9,39 +9,12 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
-
-      - name: 🛠️ Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: 📦 Install dependencies
-        run: npm ci
-
-      - name: 🏗️ Build Next.js static export
-        run: npm run build
-
-      - name: 📤 Upload build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: next-build
-          path: .next
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-      - name: 📥 Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: next-build
-          path: .next
 
       - name: 🔐 Setup SSH agent
         uses: webfactory/ssh-agent@v0.5.4
@@ -53,11 +26,18 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan ${{ secrets.VPS_IP }} >> ~/.ssh/known_hosts
 
-      - name: 🚀 Sync files to VPS
+      - name: 🚀 Sync project to VPS
         run: |
-          rsync -avz --delete ./.next/ ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }}:/var/www/geeg.tatar/.next/
-          rsync -avz --delete ./package.json ./next.config.js ./public/ ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }}:/var/www/geeg.tatar/
+          rsync -avz --delete \
+            --exclude 'node_modules' \
+            --exclude '.git' \
+            ./ ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }}:/var/www/geeg.tatar/
 
-      - name: 🔄 Reload Nginx on VPS
+      - name: 🔄 Build & restart on VPS
         run: |
-          ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }} 'sudo systemctl reload nginx'
+          ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }} << 'EOF'
+          cd /var/www/geeg.tatar
+          npm ci --omit=dev
+          npm run build
+          sudo systemctl restart next-geeg
+          EOF
