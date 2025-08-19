@@ -29,8 +29,8 @@ jobs:
       - name: 📤 Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: next-export
-          path: out
+          name: next-build
+          path: .next
 
   deploy:
     runs-on: ubuntu-latest
@@ -40,8 +40,8 @@ jobs:
       - name: 📥 Download build artifact
         uses: actions/download-artifact@v4
         with:
-          name: next-export
-          path: out
+          name: next-build
+          path: .next
 
       - name: 🔐 Setup SSH agent
         uses: webfactory/ssh-agent@v0.5.4
