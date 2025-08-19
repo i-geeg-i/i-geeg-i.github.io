@@ -55,7 +55,8 @@ jobs:
 
       - name: 🚀 Sync files to VPS
         run: |
-          rsync -avz --delete ./out/ ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }}:/var/www/geeg.tatar/
+          rsync -avz --delete ./.next/ ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }}:/var/www/geeg.tatar/.next/
+          rsync -avz --delete ./package.json ./next.config.js ./public/ ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }}:/var/www/geeg.tatar/
 
       - name: 🔄 Reload Nginx on VPS
         run: |
