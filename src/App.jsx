@@ -1,9 +1,11 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import me1 from '/me1.png'
 import me2 from '/me2.png'
 import me3 from '/me3.png'
 import me4 from '/me4.png'
+import me5 from '/me5.png'
+import mail from '/mail.png'
+import telegram from '/telegram.png'
 import css from '/css.png'
 import js from '/js.png'
 import html from '/html.png'
@@ -17,7 +19,6 @@ import figma from '/figma.png'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
@@ -43,18 +44,18 @@ function App() {
           </p>
           <h2 style={{marginTop: '40px'}}>Основной стэк</h2>
           <div className='stack'>
-            <img src={html} className="stack" alt="html" />
-            <img src={css} className="stack" alt="css"/>
-            <img src={js} className="stack" alt="js" />
-            <img src={react} className="stack" alt="react" />
-            <img src={vite} className="stack" alt="vite" />
+            <img src={html} className="stack" alt="HTML logo" />
+            <img src={css} className="stack" alt="CSS logo"/>
+            <img src={js} className="stack" alt="JS logo" />
+            <img src={react} className="stack" alt="React logo" />
+            <img src={vite} className="stack" alt="Vite logo" />
           </div>
           <h3>Так же знаю</h3>
           <div className='stack'>
-            <img src={py} className="stack" alt="python" />
-            <img src={docker} className="stack" alt="docker" />
-            <img src={figma} className="stack" alt="figma"  />
-            <img src={flask} className="stack" alt="flask" />
+            <img src={py} className="stack" alt="Python logo" />
+            <img src={docker} className="stack" alt="Docker logo" />
+            <img src={figma} className="stack" alt="Figma logo"  />
+            <img src={flask} className="stack" alt="Flask logo" />
           </div>
         </div>
       </div>
@@ -80,6 +81,49 @@ function App() {
         </div>
         <div className='right' style={{width: '40%'}}>
           <img src={me3} className="photo" alt="My picture in anime style by AI" />
+        </div>
+      </div>
+      <div className='block reverse'>
+        <div className='left'>
+          <img src={me4} className="photo" alt="My picture in anime style by AI" />
+        </div>
+        <div className='right'>
+          <p className='plus'>
+            Я делал  несколько интересных проектов. Здесь про самые релевантные
+          </p>
+          <h2 style={{marginTop: '40px'}}>Проекты</h2>
+          <div className='projects'>
+            <h4>NailService</h4>
+            <a> React, TypeScript, Vite, Flask, PostgreSQL</a>
+            <p>Fullstack-приложение для онлайн-записи на маникюр и педикюр с аутентификацией, интерфейсом пользователя и администратора, REST API и базой данных</p>
+          </div>
+          <div className='projects'>
+            <h4>Truth or Dare</h4>
+            <a> React, CSS, Vite</a>
+            <p>Одностраничная онлайн-игра «Правда или действие» с тремя уровнями сложности, адаптивным UI и маршрутизацией</p>
+          </div>
+          <div className='projects'>
+            <h4>Coffee shop bonus system</h4>
+            <a> React, Supabase</a>
+            <p>Командная работа. Веб-приложение для бонусной системы и заказов: корзина, подсчёт суммы, история покупок, улучшенный адаптивный дизайн</p>
+
+          </div>
+        </div>
+      </div>
+      <div className='block' id='contact'>
+        <div className='left'>
+         <p className='minus'>Если моё мини резюме тебе понравилось, напиши мне</p>
+         <div className='contact'>
+            <img src={mail} className='icon' alt='Mail icon'></img>
+            <h2><a href='mailto:glebov.el2005@yandex.ru' target="_blank" rel="noopener noreferrer">glebov.el2005@yandex.ru</a></h2>
+          </div>
+          <div className='contact'>
+            <img src={telegram} className='icon' alt='Telegram icon'></img>
+            <h2><a href='https://t.me/i_geeg_i' target="_blank" rel="noopener noreferrer">i-geeg-i</a></h2>
+          </div>
+        </div>
+        <div className='right'>
+          <img src={me5} className="photo" alt="My picture in anime style by AI" />
         </div>
       </div>
     </>
