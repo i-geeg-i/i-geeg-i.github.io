@@ -115,7 +115,7 @@ function App() {
         <div className='left'>
          <p className='minus'>Если моё мини резюме тебе понравилось, напиши мне</p>
          <div className='contact' onClick={() => window.open('mailto:glebov.el2005@yandex.ru', '_blank')}>
-            <img src={mail} className='icon' alt='Mail icon'></img>
+            {/* <img src={mail} className='icon' alt='Mail icon'></img> */}
             <h4>glebov.el2005@yandex.ru</h4>
           </div>
           <div className='contact' onClick={() => window.open('https://t.me/i_geeg_i', '_blank')}>
