@@ -5,6 +5,7 @@ import me3 from '/me3.png'
 import me4 from '/me4.png'
 import me5 from '/me5.png'
 import mail from '/mail.png'
+import github from '/github.png'
 import telegram from '/telegram.png'
 import css from '/css.png'
 import js from '/js.png'
@@ -92,17 +93,17 @@ function App() {
             Я делал  несколько интересных проектов. Здесь про самые релевантные
           </p>
           <h2 style={{marginTop: '40px'}}>Проекты</h2>
-          <div className='projects'>
+          <div className='projects' onClick={() => window.open('https://github.com/i-geeg-i/NailService', '_blank')}>
             <h4>NailService</h4>
             <a> React, TypeScript, Vite, Flask, PostgreSQL</a>
             <p>Fullstack-приложение для онлайн-записи на маникюр и педикюр с аутентификацией, интерфейсом пользователя и администратора, REST API и базой данных</p>
           </div>
-          <div className='projects'>
+          <div className='projects' onClick={() => window.open('https://github.com/i-geeg-i/truthordare', '_blank')}>
             <h4>Truth or Dare</h4>
             <a> React, CSS, Vite</a>
             <p>Одностраничная онлайн-игра «Правда или действие» с тремя уровнями сложности, адаптивным UI и маршрутизацией</p>
           </div>
-          <div className='projects'>
+          <div className='projects' onClick={() => window.open('https://github.com/i-geeg-i/Coffee-shop-bonus-system', '_blank')}>
             <h4>Coffee shop bonus system</h4>
             <a> React, Supabase</a>
             <p>Командная работа. Веб-приложение для бонусной системы и заказов: корзина, подсчёт суммы, история покупок, улучшенный адаптивный дизайн</p>
@@ -119,7 +120,11 @@ function App() {
           </div>
           <div className='contact'>
             <img src={telegram} className='icon' alt='Telegram icon'></img>
-            <h2><a href='https://t.me/i_geeg_i' target="_blank" rel="noopener noreferrer">i-geeg-i</a></h2>
+            <h2><a href='https://t.me/i_geeg_i' target="_blank" rel="noopener noreferrer">i_geeg_i</a></h2>
+          </div>
+          <div className='contact'>
+            <img src={github} className='icon' alt='GitHub icon'></img>
+            <h2><a href='https://github.com/i-geeg-i' target="_blank" rel="noopener noreferrer">i-geeg-i</a></h2>
           </div>
         </div>
         <div className='right'>
