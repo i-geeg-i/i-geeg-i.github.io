@@ -95,17 +95,17 @@ function App() {
           <h2 style={{marginTop: '40px'}}>Проекты</h2>
           <div className='projects' onClick={() => window.open('https://github.com/i-geeg-i/NailService', '_blank')}>
             <h4>NailService</h4>
-            <a> React, TypeScript, Vite, Flask, PostgreSQL</a>
+            <span> React, TypeScript, Vite, Flask, PostgreSQL</span>
             <p>Fullstack-приложение для онлайн-записи на маникюр и педикюр с аутентификацией, интерфейсом пользователя и администратора, REST API и базой данных</p>
           </div>
           <div className='projects' onClick={() => window.open('https://github.com/i-geeg-i/truthordare', '_blank')}>
             <h4>Truth or Dare</h4>
-            <a> React, CSS, Vite</a>
+            <span> React, CSS, Vite</span>
             <p>Одностраничная онлайн-игра «Правда или действие» с тремя уровнями сложности, адаптивным UI и маршрутизацией</p>
           </div>
           <div className='projects' onClick={() => window.open('https://github.com/i-geeg-i/Coffee-shop-bonus-system', '_blank')}>
             <h4>Coffee shop bonus system</h4>
-            <a> React, Supabase</a>
+            <span> React, Supabase</span>
             <p>Командная работа. Веб-приложение для бонусной системы и заказов: корзина, подсчёт суммы, история покупок, улучшенный адаптивный дизайн</p>
 
           </div>
@@ -114,17 +114,17 @@ function App() {
       <div className='block' id='contact'>
         <div className='left'>
          <p className='minus'>Если моё мини резюме тебе понравилось, напиши мне</p>
-         <div className='contact'>
+         <div className='contact' onClick={() => window.open('mailto:glebov.el2005@yandex.ru', '_blank')}>
             <img src={mail} className='icon' alt='Mail icon'></img>
-            <h2><a href='mailto:glebov.el2005@yandex.ru' target="_blank" rel="noopener noreferrer">glebov.el2005@yandex.ru</a></h2>
+            <h4>glebov.el2005@yandex.ru</h4>
           </div>
-          <div className='contact'>
+          <div className='contact' onClick={() => window.open('https://t.me/i_geeg_i', '_blank')}>
             <img src={telegram} className='icon' alt='Telegram icon'></img>
-            <h2><a href='https://t.me/i_geeg_i' target="_blank" rel="noopener noreferrer">i_geeg_i</a></h2>
+            <h4>i_geeg_i</h4>
           </div>
-          <div className='contact'>
+          <div className='contact' onClick={() => window.open('https://github.com/i-geeg-i', '_blank')}>
             <img src={github} className='icon' alt='GitHub icon'></img>
-            <h2><a href='https://github.com/i-geeg-i' target="_blank" rel="noopener noreferrer">i-geeg-i</a></h2>
+            <h4>i-geeg-i</h4>
           </div>
         </div>
         <div className='right'>
